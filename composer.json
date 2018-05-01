@@ -1,7 +1,7 @@
 {
     "name": "matthewerskine/request-filters",
     "description": "Laravel request filtering helpers.",
-    "license": "NIT",
+    "license": "MIT",
     "type": "library",
     "require": {
         "illuminate/support": "^5.6"
