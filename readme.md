@@ -1,47 +1,57 @@
-# Guzzle Base Client
+# Request Filters
 
-This is a simple base Guzzle Client to quickly consume responses from JSON based services.
+This package is used to allow quick and dynamic filtering of eloquent based models using a simple request argument. Perfect for backend APIs!
 
-## Example usage
+## Configuration
 
-The `respond()` will automatically parse out the response from the Guzzle Client so you may quickly interact with it.
+To begin using this package in Laravel, you should firstly create a macro for a `request()->filter()` method as shown below:
 
 ```php
 
-<?php
+use MatthewErskine\RequestFilters\RequestFilters;
 
-use MatthewErskine\Guzzle\Client;
+request()->macro('filters', function() {
+    return RequestFilters::getFilterCollection(
+        // Use the 'filters' query param.
+        request()->query('filters')
+    );
+});
 
-class FruitService extends Client
+```
+
+*Note: For Lumen applications, you'll need a helper file to define the `request()` method as this is not available by default.*
+
+Now within any of your repositories, you can begin filtering the results from that model based on whatever strategy and parameter information was provided within the `filters` query parameter:
+
+```php
+
+public function getFood()
 {
-    public function getFruits()
-    {
-        // {"data": [{"title": "banana"}, {"title": "apple"}]}
-        return $this->respond(
-            $this->getHttpClient()->get($this->getUrl().'/bananas')
-        );
-    }
+    return request()->filters()->apply(
+        DB::table('food')
+    );
 }
 
 ```
 
-Now in a consuming class we can interact with data directly:
+Now, we can provide a base_64 encoded string containing a JSON strategy for how we wish to filter our food. For example:
 
-```php
-<?php
-
-class FruitRepository
-{
-    ...
-
-    public function giveMeABanana()
+```json
+[
     {
-        foreach ($this->fruitService->getFruits() as $fruit) {
-            if ($fruit['title'] == 'banana') {
-                return $fruit;
-            }
-        }
+        "strategy": "where",
+        "parameters": [
+            "calories",
+            ">",
+            100
+        ]
+    },
+    {
+        "strategy": "whereIn",
+        "parameters": [
+            "food_type",
+            "('fried', 'baked')"
+        ]
     }
-}
-
+]
 ```
