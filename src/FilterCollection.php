@@ -1,6 +1,6 @@
 <?php
 
-namespace MatthewErskine\RequestFilters;
+namespace CroudTech\RequestFilters;
 
 use Illuminate\Support\Collection;
 

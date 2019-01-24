@@ -8,7 +8,7 @@ To begin using this package in Laravel, you should firstly create a macro for a 
 
 ```php
 
-use MatthewErskine\RequestFilters\RequestFilters;
+use CroudTech\RequestFilters\RequestFilters;
 
 request()->macro('filters', function() {
     return RequestFilters::getFilterCollection(

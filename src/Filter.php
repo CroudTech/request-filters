@@ -1,6 +1,6 @@
 <?php
 
-namespace MatthewErskine\RequestFilters;
+namespace CroudTech\RequestFilters;
 
 class Filter
 {

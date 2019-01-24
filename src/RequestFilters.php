@@ -1,6 +1,6 @@
 <?php
 
-namespace MatthewErskine\RequestFilters;
+namespace CroudTech\RequestFilters;
 
 class RequestFilters
 {
@@ -8,7 +8,7 @@ class RequestFilters
      * Gets a filter collection for the given encoded query string.
      *
      * @param  string $query
-     * @return \MatthewErskine\RequestFilters\FilterCollection
+     * @return \CroudTech\RequestFilters\FilterCollection
      */
     public static function getFilterCollection($query)
     {

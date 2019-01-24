@@ -2,7 +2,7 @@
 
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
-use MatthewErskine\RequestFilters\RequestFilters;
+use CroudTech\RequestFilters\RequestFilters;
 
 class FeatureTest extends TestCase
 {
