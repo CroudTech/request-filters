@@ -1,5 +1,5 @@
 {
-    "name": "matthewerskine/request-filters",
+    "name": "croudtech/request-filters",
     "description": "Laravel request filtering helpers.",
     "license": "MIT",
     "type": "library",
