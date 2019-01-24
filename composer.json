@@ -8,7 +8,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MatthewErskine\\RequestFilters\\": "src/"
+            "CroudTech\\RequestFilters\\": "src/"
         }
     },
     "authors": [
